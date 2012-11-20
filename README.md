@@ -10,6 +10,7 @@ resource, hence it may take some short time before it's terminated due
 to way BEAM GC works.
 
 Note: work only with SMP enabled!
+Note2: garbage collection works well only locally, since NIF resource reference counting is per-node
 
 ## Usage ##
 
