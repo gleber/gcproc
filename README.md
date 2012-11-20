@@ -3,6 +3,8 @@
 This library implements garbage-collected processes by (ab)using
 garbage collection of NIF resources.
 
+Big thanks to Tony Rogvall who did all the hard parts in http://github.com/tonyrog/resource project.
+
 Please note that node will be garbage collected along with the
 resource, hence it may take some short time before it's terminated due
 to way BEAM GC works.
