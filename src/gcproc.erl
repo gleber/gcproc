@@ -4,7 +4,7 @@
 
 -export([spawn/1,
 
-         send/2, pid/1]).
+         send/2, link/1, pid/1]).
 
 -record(gcproc, {pid, res}).
 
@@ -19,6 +19,8 @@ send(Msg, #gcproc{pid = Pid}) ->
 pid(#gcproc{pid = Pid}) ->
     Pid.
 
+link(#gcproc{pid = Pid}) ->
+    erlang:link(Pid).
 
 simple_test() ->
     ok = application:start(gcproc),

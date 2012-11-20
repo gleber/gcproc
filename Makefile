@@ -4,7 +4,7 @@ all: $(REBAR)
 	$(REBAR) get-deps compile
 
 tests:  $(REBAR)
-	$(REBAR) eunit skip_deps=true suite=dstree
+	$(REBAR) eunit skip_deps=true
 
 sh: all
 	erl -smp enable -pa ebin/ -pa deps/*/ebin/ -pa .eunit/ -eval 'shell_default:m(gcproc)'
