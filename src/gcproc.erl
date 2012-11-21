@@ -4,7 +4,12 @@
 
 -export([spawn/1,
 
-         send/2, link/1, pid/1]).
+         send/2,
+
+         link/1, unlink/1,
+         monitor/1, demonitor/2,
+
+         pid/1]).
 
 -record(gcproc, {pid, res}).
 
@@ -21,6 +26,15 @@ pid(#gcproc{pid = Pid}) ->
 
 link(#gcproc{pid = Pid}) ->
     erlang:link(Pid).
+
+unlink(#gcproc{pid = Pid}) ->
+    erlang:unlink(Pid).
+
+monitor(#gcproc{pid = Pid}) ->
+    erlang:monitor(process, Pid).
+
+demonitor(Ref, #gcproc{pid = _Pid}) ->
+    erlang:demonitor(Ref, [flush]).
 
 simple_test() ->
     ok = application:start(gcproc),
